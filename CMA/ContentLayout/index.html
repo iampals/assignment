@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="orgAssessment" ng-controller="indexController">
+
+<head>
+    <meta charset="utf-8">
+    <title>CMA</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Org Chart">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="vendor/styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/custom.css" rel="stylesheet" />
+</head>
+<body ng-click="">
+    
+    <div id="page-view">
+        <div class="page-bg-header">
+            <div class="navbar navbar-default page-header">
+                <div class="container-fluid pageheader-container">
+                    <div class="pageheader-inner">
+                        <a class="company-navbar-brand" href="#">
+                            <div class="company-logo">
+                                <img src="{{headercontent.companyheaderlogo}}" data-ng-hide="!headercontent.companyheaderlogo"/>
+                            </div>
+                        </a>
+
+                        <div class="nav pull-left">
+                            <span class="navbar-text appNameClass"><span class=pageheader-text>{{headercontent.navigationheaderslink1}}</span></span>
+                            <span class="navbar-text appNameClass"><span class=pageheader-text>{{headercontent.navigationheaderslink2}}</span></span>
+                        </div>
+
+                        <a class="company-navbar-brand" href="#" style="float:right !important;">
+                            <div class="company-logo">
+                                <img src="{{headercontent.personlogo}}"  style="height:100%;" data-ng-hide="!headercontent.personlogo"/>
+                            </div>
+                        </a>
+
+                        <div class="nav page-header-right-content pull-right">
+                            <span class="pull-right-textsize" data-ng-hide="!headercontent.personearn">${{headercontent.personearn|number:2}} &nbsp;</span>
+                            <span>
+                                <a data-ng-hide="authentication.IsAuthenticated" href="#/login">Login</a>
+                                <a data-ng-hide="!authentication.IsAuthenticated" data-ng-click="logOut()" href="">Logout</a>
+                            </span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="main-view">
+            <div data-ng-view="" class="main" autoscroll>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; All Rights Reserved</p>
+        </div>
+    </div>
+
+    <script src="vendor/js/angular.js"></script>
+    <script src="vendor/js/angular-route.js"></script>
+    
+
+    <!-- Load app main script -->
+    <script src="components/app.js"></script>
+
+    <!-- Load Angular services -->
+    <script src="components/Services/dataService.js"></script>
+    <script src="components/Services/authData.js"></script>
+    <!-- Load Angular controllers -->
+    
+    <script src="components/Controllers/indexController.js"></script>
+    <script src="components/Controllers/homeController.js"></script>
+    <script src="components/Controllers/loginController.js"></script>
+</body>
+</html>
